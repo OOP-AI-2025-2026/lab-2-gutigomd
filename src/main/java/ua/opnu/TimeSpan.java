@@ -1,46 +1,63 @@
 package ua.opnu;
 
-
 public class TimeSpan {
 
-    // TODO: add class fields
+    private int totalMinutes;
 
-    TimeSpan(int hours, int minutes) {
-        // TODO: write constructor body
+    public TimeSpan(int hours, int minutes) {
+        if (hours < 0 || minutes < 0 || minutes > 59) {
+            this.totalMinutes = 0;
+        } else {
+            this.totalMinutes = hours * 60 + minutes;
+        }
     }
 
-    int getHours() {
-        return 0;
+    public int getHours() {
+        return totalMinutes / 60;
     }
 
-    int getMinutes() {
-        // TODO: write method body
-        return 0;
+    public int getMinutes() {
+        return totalMinutes % 60;
     }
 
-    void add(int hours, int minutes) {
-        // TODO: write method body
+    public double getTotalHours() {
+        return (double) totalMinutes / 60.0;
     }
 
-    void addTimeSpan(TimeSpan timespan) {
-        // TODO: write method body
+    public int getTotalMinutes() {
+        return totalMinutes;
     }
 
-    double getTotalHours() {
-        // TODO: write method body
-        return 0;
+    public void add(int hours, int minutes) {
+        if (hours < 0 || minutes < 0 || minutes > 59) {
+            return;
+        }
+
+        int addedMinutes = hours * 60 + minutes;
+        this.totalMinutes += addedMinutes;
     }
 
-    int getTotalMinutes() {
-        // TODO: write method body
-        return 0;
+    public void addTimeSpan(TimeSpan timespan) {
+        if (timespan == null) return;
+        this.totalMinutes += timespan.getTotalMinutes();
     }
 
-    void subtract(TimeSpan span) {
-        // TODO: write method body
+    public void subtract(TimeSpan span) {
+        if (span == null) return;
+        int totalOther = span.getTotalMinutes();
+
+        if (totalOther > this.totalMinutes) {
+            return;
+        }
+
+        this.totalMinutes -= totalOther;
     }
 
-    void scale(int factor) {
-        // TODO: write method body
+    public void scale(int factor) {
+        if (factor <= 0) {
+            return;
+        }
+
+        this.totalMinutes *= factor;
     }
 }
