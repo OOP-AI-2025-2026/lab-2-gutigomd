@@ -18,7 +18,7 @@ public class Lab2Test {
             assertEquals(0, span.getHours());
             assertEquals(0, span.getMinutes());
         }
-
+//
         @Test
         @DisplayName("Test constructor for invalid arguments 1")
         void test2() {
