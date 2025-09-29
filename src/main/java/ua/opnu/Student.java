@@ -45,6 +45,6 @@ public class Student {
     }
 
     public int getTuition() {
-        return year * 2000;
+        return year * 20000;
     }
 }
