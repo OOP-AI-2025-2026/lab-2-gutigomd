@@ -24,6 +24,14 @@ public class Student {
         }
     }
 
+    @SuppressWarnings("unused")
+    public String[] getCourses() {
+        // Повертаємо копію лише заповненої частини масиву
+        String[] activeCourses = new String[coursesCount];
+        System.arraycopy(courses, 0, activeCourses, 0, coursesCount);
+        return activeCourses;
+    }
+
     public int getCourseCount() {
         return coursesCount;
     }
